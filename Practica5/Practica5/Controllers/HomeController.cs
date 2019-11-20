@@ -26,5 +26,9 @@ namespace Practica5.Controllers
 
             return View();
         }
+        public ActionResult AcercaDe()
+        {
+            return View();
+        }
     }
 }
