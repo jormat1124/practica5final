@@ -18,6 +18,11 @@ namespace Practica5.Models.ViewModels
         [Display(Name = "nombre")]
         public string nombre { get; set; }
 
+
+        [Required]
+        [Display(Name = "Numero")]
+        public int numero { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Correo Electronico")]

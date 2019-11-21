@@ -16,13 +16,16 @@
         <table class="table">
             <tr>
                 <th>
-                    Id-evento
-                </th>
-                <th>
-                    Evento
+                    Id Agenda
                 </th>
                 <th>
                     Nombre
+                </th>
+                <th>
+                    Numero
+                </th>
+                <th>
+                    Email
                 </th>
                 <th>
                     Direccion
@@ -37,11 +40,12 @@
             <tr>
                 <td>@listcontactos.id_agenda</td>
                 <td>@listcontactos.nombre</td>
+                <td>@listcontactos.numero</td>
                 <td>@listcontactos.email</td>
                 <td>@listcontactos.direccion</td>
                 <td>
-                    <a href="~/Home/editarcontacto/@listcontactos.id_agenda">Editar</a>
-                    <a href="~/Home/eliminarcontacto/@listcontactos.id_agenda">Eliminar</a>
+                    <a class="btn btn-warning" href="~/Home/editarcontacto/@listcontactos.id_agenda">Editar</a>
+                    <a class="btn btn-danger" href="~/Home/eliminarcontacto/@listcontactos.id_agenda">Eliminar</a>
                 </td>
             </tr>
             }

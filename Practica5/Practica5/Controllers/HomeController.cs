@@ -33,6 +33,7 @@ namespace Practica5.Controllers
                           {
                               id_agenda = d.id_agenda,
                               nombre = d.nombre,
+                              numero = d.numero,
                               email = d.email,
                               direccion = d.direccion
                           }).ToList();
@@ -63,6 +64,7 @@ namespace Practica5.Controllers
                         var dncontactos = new agenda();
                         dncontactos.id_agenda = modelAgenda.id_agenda;
                         dncontactos.nombre = modelAgenda.nombre;
+                        dncontactos.numero = modelAgenda.numero;
                         dncontactos.email = modelAgenda.email;
                         dncontactos.direccion = modelAgenda.direccion;
 
@@ -91,7 +93,9 @@ namespace Practica5.Controllers
                 modelagendaeditar.nombre = agenda.nombre;
                 modelagendaeditar.email = agenda.email;
                 modelagendaeditar.direccion = agenda.direccion;
-              }
+
+
+            }
 
             return View(modelagendaeditar);
         }

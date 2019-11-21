@@ -18,5 +18,6 @@ namespace Practica5.Models
         public string nombre { get; set; }
         public string email { get; set; }
         public string direccion { get; set; }
+        public int numero { get; set; }
     }
 }

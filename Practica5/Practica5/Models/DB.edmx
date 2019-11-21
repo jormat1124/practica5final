@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="practica5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="practica5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="agenda">
           <Key>
             <PropertyRef Name="id_agenda" />
           </Key>
           <Property Name="id_agenda" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" />
+          <Property Name="numero" Type="numeric" Precision="15" Scale="0" />
           <Property Name="email" Type="varchar" MaxLength="30" />
           <Property Name="direccion" Type="varchar" MaxLength="30" />
         </EntityType>
@@ -26,8 +27,7 @@
           <EntitySet Name="agenda" EntityType="Self.agenda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="evento" EntityType="Self.evento" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="practica5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,6 +39,7 @@
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="Int32" />
         </EntityType>
         <EntityType Name="evento">
           <Key>
@@ -61,6 +62,7 @@
           <EntitySetMapping Name="agenda">
             <EntityTypeMapping TypeName="practica5Model.agenda">
               <MappingFragment StoreEntitySet="agenda">
+                <ScalarProperty Name="numero" ColumnName="numero" />
                 <ScalarProperty Name="id_agenda" ColumnName="id_agenda" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="email" ColumnName="email" />

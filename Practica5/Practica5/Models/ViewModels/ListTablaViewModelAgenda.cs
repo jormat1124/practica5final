@@ -9,6 +9,7 @@ namespace Practica5.Models.ViewModels
     {
         public int id_agenda { get; set; }
         public string nombre { get; set; }
+        public int numero { get; set; }
         public string email { get; set; }
         public string direccion { get; set; }
 
