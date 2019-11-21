@@ -43,6 +43,91 @@ namespace Practica5.Controllers
 
             return View(lst);
         }
+        public ActionResult nuevocontacto()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult nuevocontacto(TablaViewModelAgenda modelAgenda)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+            
+                {
+                    using (practica5Entities1 db = new practica5Entities1())
+                    { 
+                        var dncontactos = new agenda();
+                        dncontactos.id_agenda = modelAgenda.id_agenda;
+                        dncontactos.nombre = modelAgenda.nombre;
+                        dncontactos.email = modelAgenda.email;
+                        dncontactos.direccion = modelAgenda.direccion;
+
+                        db.agenda.Add(dncontactos);
+                        db.SaveChanges();
+                        
+                    }
+
+                    return Redirect("~/Home/Agenda/");
+                }
+                return View(modelAgenda);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public ActionResult editarcontacto(int id)
+        {
+            TablaViewModelAgenda modelagendaeditar = new TablaViewModelAgenda();
+            using (practica5Entities1 db = new practica5Entities1())
+            {
+                var agenda = db.agenda.Find(id);
+                modelagendaeditar.id_agenda = agenda.id_agenda;
+                modelagendaeditar.nombre = agenda.nombre;
+                modelagendaeditar.email = agenda.email;
+                modelagendaeditar.direccion = agenda.direccion;
+
+
+            }
+
+            return View(modelagendaeditar);
+        }
+
+        [HttpPost ]
+        public ActionResult editarcontacto(TablaViewModelAgenda modelAgenda)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+
+                {
+                    using (practica5Entities1 db = new practica5Entities1())
+                    {
+                        var dncontactos = db.agenda.Find(modelAgenda.id_agenda);
+                        dncontactos.id_agenda = modelAgenda.id_agenda;
+                        dncontactos.nombre = modelAgenda.nombre;
+                        dncontactos.email = modelAgenda.email;
+                        dncontactos.direccion = modelAgenda.direccion;
+
+                        db.Entry(dncontactos).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+
+                    }
+
+                    return Redirect("~/Home/Agenda/");
+                }
+                return View(modelAgenda);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public ActionResult Evento()
         {

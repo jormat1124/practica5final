@@ -5,10 +5,15 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<h3>Listado de contactos</h3>
+
+<div class="row" style="text-align:left;padding:5px;">
+    <a href="nuevocontacto" class="btn btn-primary">Agregar contacto</a>
+</div>
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table-responsive">
+        <table class="table">
             <tr>
                 <th>
                     Id-evento
@@ -22,15 +27,22 @@
                 <th>
                     Direccion
                 </th>
+                <th>
+                    Opciones
+                </th>
 
             </tr>
-            @foreach(var listaeventos in Model)
+            @foreach(var listcontactos in Model)
             {
             <tr>
-                <td>@listaeventos.id_agenda</td>
-                <td>@listaeventos.nombre</td>
-                <td>@listaeventos.email</td>
-                <td>@listaeventos.direccion</td>
+                <td>@listcontactos.id_agenda</td>
+                <td>@listcontactos.nombre</td>
+                <td>@listcontactos.email</td>
+                <td>@listcontactos.direccion</td>
+                <td>
+                    <a href="~/Home/editarcontacto/@listcontactos.id_agenda">Editar</a>
+                    <a href="~/Home/eliminarcontacto/@listcontactos.id_agenda">Eliminar</a>
+                </td>
             </tr>
             }
 

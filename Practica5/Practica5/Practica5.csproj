@@ -160,6 +160,7 @@
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\ListTablaViewModelAgenda.cs" />
+    <Compile Include="Models\ViewModels\TablaViewModelAgenda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +218,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Agenda.cshtml" />
     <Content Include="Views\Home\Evento.cshtml" />
+    <Content Include="Views\Home\nuevocontacto.cshtml" />
+    <Content Include="Views\Home\editarcontacto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
