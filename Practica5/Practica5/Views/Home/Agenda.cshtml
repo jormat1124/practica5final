@@ -1,7 +1,40 @@
-﻿
+﻿@model List<Practica5.Models.ViewModels.ListTablaViewModelAgenda>
+
 @{
     ViewBag.Title = "Agenda";
 }
 
-<h2>Agenda</h2>
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table-responsive">
+            <tr>
+                <th>
+                    Id-evento
+                </th>
+                <th>
+                    Evento
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Direccion
+                </th>
+
+            </tr>
+            @foreach(var listaeventos in Model)
+            {
+            <tr>
+                <td>@listaeventos.id_agenda</td>
+                <td>@listaeventos.nombre</td>
+                <td>@listaeventos.email</td>
+                <td>@listaeventos.direccion</td>
+            </tr>
+            }
+
+        </table>
+    </div>
+</div>
 

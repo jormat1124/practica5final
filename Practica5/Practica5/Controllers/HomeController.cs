@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Practica5.Models;
+using Practica5.Controllers;
+using Practica5.Models.ViewModels;
 
 namespace Practica5.Controllers
 {
@@ -22,9 +25,23 @@ namespace Practica5.Controllers
         //agracion de mis metodos
         public ActionResult Agenda()
         {
-            ViewBag.Message = "Your contact page.";
+            List<ListTablaViewModelAgenda> lst;
+            using (practica5Entities1 db = new practica5Entities1())
+            {
+                 lst = (from d in db.agenda
+                          select new ListTablaViewModelAgenda
+                          {
+                              id_agenda = d.id_agenda,
+                              nombre = d.nombre,
+                              email = d.email,
+                              direccion = d.direccion
+                          }).ToList();
 
-            return View();
+            }
+
+                ViewBag.Message = "Esta es el formulario de la agenda";
+
+            return View(lst);
         }
 
         public ActionResult Evento()
