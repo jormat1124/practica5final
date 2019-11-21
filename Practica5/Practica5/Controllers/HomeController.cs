@@ -91,9 +91,7 @@ namespace Practica5.Controllers
                 modelagendaeditar.nombre = agenda.nombre;
                 modelagendaeditar.email = agenda.email;
                 modelagendaeditar.direccion = agenda.direccion;
-
-
-            }
+              }
 
             return View(modelagendaeditar);
         }
