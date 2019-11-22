@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cc9e51bd9ca04d99997b82b50a23ac58" Name="Diagram1">
         <EntityTypeShape EntityType="practica5Model.agenda" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="practica5Model.evento" Width="1.5" PointX="3.5" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

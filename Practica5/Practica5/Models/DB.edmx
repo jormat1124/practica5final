@@ -11,12 +11,22 @@
           </Key>
           <Property Name="id_agenda" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" />
-          <Property Name="numero" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="numero" Type="int" />
           <Property Name="email" Type="varchar" MaxLength="30" />
           <Property Name="direccion" Type="varchar" MaxLength="30" />
         </EntityType>
+        <EntityType Name="evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="evento" Type="varchar" MaxLength="10" />
+          <Property Name="fecha" Type="varchar" MaxLength="25" />
+          <Property Name="hora" Type="varchar" MaxLength="10" />
+        </EntityType>
         <EntityContainer Name="practica5ModelStoreContainer">
           <EntitySet Name="agenda" EntityType="Self.agenda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evento" EntityType="Self.evento" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -34,7 +44,17 @@
         </EntityType>
         <EntityContainer Name="practica5Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="agenda" EntityType="Self.agenda" />
+          <EntitySet Name="evento" EntityType="practica5Model.evento" />
         </EntityContainer>
+        <EntityType Name="evento">
+          <Key>
+            <PropertyRef Name="id_evento" />
+          </Key>
+          <Property Name="id_evento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="evento1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="hora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -49,6 +69,16 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evento">
+            <EntityTypeMapping TypeName="practica5Model.evento">
+              <MappingFragment StoreEntitySet="evento">
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="evento1" ColumnName="evento" />
+                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

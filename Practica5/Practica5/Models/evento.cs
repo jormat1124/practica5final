@@ -15,7 +15,8 @@ namespace Practica5.Models
     public partial class evento
     {
         public int id_evento { get; set; }
-        public Nullable<System.DateTime> fecha { get; set; }
-        public Nullable<System.TimeSpan> hora { get; set; }
+        public string evento1 { get; set; }
+        public string fecha { get; set; }
+        public string hora { get; set; }
     }
 }

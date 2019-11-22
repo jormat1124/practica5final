@@ -1,0 +1,37 @@
+﻿
+@model Practica5.Models.ViewModels.TablaViewModelEvento
+@{
+    ViewBag.Title = "Nuevo Evento";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("nuevoevento", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(e => e.evento1)
+            @Html.TextBoxFor(e => e.evento1, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(e => e.evento1, null)
+            <br />
+            @Html.LabelFor(e => e.fecha)
+                    @Html.TextBoxFor(e => e.fecha, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(e => e.fecha, null)
+            <br />
+            @Html.LabelFor(e => e.hora)
+            @Html.TextBoxFor(e => e.hora, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(e => e.hora, null)
+          
+
+        </div>
+    </div>
+
+    <div style="text-align:left; padding:5px;">
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+    </div>
+
+
+
+}
+
+
