@@ -1,0 +1,66 @@
+﻿@model List<Practica5.Models.ViewModels.ListViewModelEvento>
+
+@{
+    ViewBag.Title = "Evento";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<h3>Listado de eventos</h3>
+
+<div class="row" style="text-align:left;padding:5px;">
+    <a href="nuevoevento" class="btn btn-primary">Agregar Envento</a>
+</div>
+
+<form method="post">
+
+    <h5>Puede buscar sus eventos por fecha y por nombre</h5>
+
+
+    <div class="form-inline">
+
+        <input type="text" name="dato" class="form-control" />
+        <input type="submit" value="buscar" class="btn btn-danger" />
+    </div>
+</form>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>
+                    Id Evento
+                </th>
+                <th>
+                    Evento
+                </th>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Hora
+                </th>
+              
+                <th>
+                    Opciones
+                </th>
+
+            </tr>
+            @foreach (var listEventos in Model)
+            {
+            <tr>
+                <td>@listEventos.id_evento</td>
+                <td>@listEventos.evento1</td>
+                <td>@listEventos.fecha</td>
+                <td>@listEventos.hora</td>
+
+            </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

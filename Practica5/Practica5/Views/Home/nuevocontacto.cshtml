@@ -1,0 +1,42 @@
+﻿@model Practica5.Models.ViewModels.TablaViewModelAgenda
+@{
+    ViewBag.Title = "Nuevo Contacto";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("nuevocontacto", "Home", FormMethod.Post))
+{
+<div class="row">
+    <div class="col-md-12">
+        @Html.LabelFor(d => d.id_agenda)
+        @Html.TextBoxFor(d => d.id_agenda, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.id_agenda, null)
+        <br />
+        @Html.LabelFor(d => d.nombre)
+        @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.nombre, null)
+        <br />
+        @Html.LabelFor(d => d.numero)
+        @Html.TextBoxFor(d => d.numero, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.numero, null)
+        <br />
+        @Html.LabelFor(d => d.email)
+        @Html.TextBoxFor(d => d.email, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.email, null)
+        <br />
+        @Html.LabelFor(d => d.direccion)
+        @Html.TextBoxFor(d => d.direccion, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(d => d.direccion, null)
+
+    </div>
+</div>
+
+    <div style="text-align:left; padding:5px;">
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+    </div>
+    
+
+
+}
+

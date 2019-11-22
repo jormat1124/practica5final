@@ -1,0 +1,74 @@
+﻿@model List<Practica5.Models.ViewModels.ListTablaViewModelAgenda>
+
+@{
+    ViewBag.Title = "Agenda";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<h3>Listado de contactos</h3>
+
+<div class="row" style="text-align:left;padding:5px;">
+    <a href="nuevocontacto" class="btn btn-primary">Agregar contacto</a>
+</div>
+
+<form method="post">
+
+    <h5>Puede buscar sus conctactos por email y por nombre</h5>
+
+
+    <div class="form-inline">
+
+        <input type="text" name="dato" class="form-control" />
+        <input type="submit" value="buscar" class="btn btn-danger" />
+    </div>
+</form>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>
+                    Id Agenda
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Numero
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Direccion
+                </th>
+                <th>
+                    Opciones
+                </th>
+
+            </tr>
+            @foreach (var listcontactos in Model)
+            {
+                <tr>
+                    <td>@listcontactos.id_agenda</td>
+                    <td>@listcontactos.nombre</td>
+                    <td>@listcontactos.numero</td>
+                    <td>@listcontactos.email</td>
+                    <td>@listcontactos.direccion</td>
+                    <td>
+                        <a class="btn btn-warning" href="~/Home/editarcontacto/@listcontactos.id_agenda">Editar</a>
+                        <a class="btn btn-danger" href="~/Home/eliminarcontacto/@listcontactos.id_agenda">Eliminar</a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+
