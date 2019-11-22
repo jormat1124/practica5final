@@ -23,44 +23,62 @@ namespace Practica5.Controllers
             return View();
         }
         //agracion de mis metodos
-        public ActionResult Agenda()
+        public ActionResult Agenda(String dato,String tipo)
         {
             List<ListTablaViewModelAgenda> lst;
             using (practica5Entities1 db = new practica5Entities1())
             {
-                 lst = (from d in db.agenda
-                          select new ListTablaViewModelAgenda
-                          {
-                              id_agenda = d.id_agenda,
-                              nombre = d.nombre,
-                              numero = d.numero,
-                              email = d.email,
-                              direccion = d.direccion
-                          }).ToList();
+                if ((dato != null)) {
+                   
+                                                lst = (from d in db.agenda
+                                   where ((d.nombre == dato) || (d.email == dato))
+                                   select new ListTablaViewModelAgenda
+                                   {
+                                       id_agenda = d.id_agenda,
+                                       nombre = d.nombre,
+                                       numero = d.numero,
+                                       email = d.email,
+                                       direccion = d.direccion
+                                   }).ToList();
+
+
+                          
+                    }        
+                else
+                lst = (from d in db.agenda
+                       select new ListTablaViewModelAgenda
+                       {
+                           id_agenda = d.id_agenda,
+                           nombre = d.nombre,
+                           numero = d.numero,
+                           email = d.email,
+                           direccion = d.direccion
+                       }).ToList();
 
             }
 
-                ViewBag.Message = "Esta es el formulario de la agenda";
+            ViewBag.Message = "Esta es el formulario de la agenda";
 
             return View(lst);
         }
+        //Esta parte es para añadir un nuevo contacto
         public ActionResult nuevocontacto()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult nuevocontacto(TablaViewModelAgenda modelAgenda)
         {
             try
             {
                 if (ModelState.IsValid)
-            
+
                 {
                     using (practica5Entities1 db = new practica5Entities1())
-                    { 
+                    {
                         var dncontactos = new agenda();
                         dncontactos.id_agenda = modelAgenda.id_agenda;
                         dncontactos.nombre = modelAgenda.nombre;
@@ -70,19 +88,19 @@ namespace Practica5.Controllers
 
                         db.agenda.Add(dncontactos);
                         db.SaveChanges();
-                        
+
                     }
 
                     return Redirect("~/Home/Agenda/");
                 }
                 return View(modelAgenda);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
+        // esta parte es para cargar los datos del contacto
         public ActionResult editarcontacto(int id)
         {
             TablaViewModelAgenda modelagendaeditar = new TablaViewModelAgenda();
@@ -99,8 +117,8 @@ namespace Practica5.Controllers
 
             return View(modelagendaeditar);
         }
-
-        [HttpPost ]
+        // Esta parte es para editar el contacto 
+        [HttpPost]
         public ActionResult editarcontacto(TablaViewModelAgenda modelAgenda)
         {
             try
@@ -130,6 +148,47 @@ namespace Practica5.Controllers
                 throw new Exception(ex.Message);
             }
         }
+       //Este action es para eliminar el contacto
+
+        public ActionResult eliminarcontacto(int id)
+        {
+
+            using (practica5Entities1 db = new practica5Entities1())
+            {
+                var aagenda = db.agenda.Find(id);
+                db.agenda.Remove(aagenda);
+                db.SaveChanges();
+
+            }
+
+            return Redirect("~/Home/Agenda/");
+        }
+        // En esta parte se realizara la consulta
+        public ActionResult buscarcontacto(String dato)
+        {
+            List<ListTablaViewModelAgenda> lst;
+            using (practica5Entities1 db = new practica5Entities1())
+            {
+
+
+                lst = (from d in db.agenda
+                       where d.nombre == dato
+                       select new ListTablaViewModelAgenda
+                       {
+                           id_agenda = d.id_agenda,
+                           nombre = d.nombre,
+                           numero = d.numero,
+                           email = d.email,
+                           direccion = d.direccion
+                       }).ToList();
+
+            }
+
+            ViewBag.Message = "Esta es el formulario de la agenda";
+
+            return View(lst);
+
+
 
         public ActionResult Evento()
         {
@@ -144,9 +203,10 @@ namespace Practica5.Controllers
 
             return View();
         }
-    
-        
-       
+
+
+      
+        }
 
     }
 }
