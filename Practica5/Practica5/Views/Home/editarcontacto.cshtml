@@ -10,10 +10,6 @@
     <div class="row">
         <div class="col-md-12">
             @Html.HiddenFor(d => d.id_agenda)
-
-            @Html.LabelFor(d => d.id_agenda)
-            @Html.TextBoxFor(d => d.numero, "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(d => d.id_agenda, null)
             <br />
             @Html.LabelFor(d => d.nombre)
             @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
