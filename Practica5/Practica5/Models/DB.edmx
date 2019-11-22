@@ -15,17 +15,8 @@
           <Property Name="email" Type="varchar" MaxLength="30" />
           <Property Name="direccion" Type="varchar" MaxLength="30" />
         </EntityType>
-        <EntityType Name="evento">
-          <Key>
-            <PropertyRef Name="id_evento" />
-          </Key>
-          <Property Name="id_evento" Type="int" Nullable="false" />
-          <Property Name="fecha" Type="date" />
-          <Property Name="hora" Type="time" Precision="7" />
-        </EntityType>
         <EntityContainer Name="practica5ModelStoreContainer">
           <EntitySet Name="agenda" EntityType="Self.agenda" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="evento" EntityType="Self.evento" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -41,17 +32,8 @@
           <Property Name="direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="numero" Type="Int32" />
         </EntityType>
-        <EntityType Name="evento">
-          <Key>
-            <PropertyRef Name="id_evento" />
-          </Key>
-          <Property Name="id_evento" Type="Int32" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Precision="0" />
-          <Property Name="hora" Type="Time" Precision="7" />
-        </EntityType>
         <EntityContainer Name="practica5Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="agenda" EntityType="Self.agenda" />
-          <EntitySet Name="evento" EntityType="Self.evento" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -67,15 +49,6 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="evento">
-            <EntityTypeMapping TypeName="practica5Model.evento">
-              <MappingFragment StoreEntitySet="evento">
-                <ScalarProperty Name="id_evento" ColumnName="id_evento" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="hora" ColumnName="hora" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
